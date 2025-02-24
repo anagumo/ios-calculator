@@ -25,11 +25,15 @@ class ViewController: UIViewController {
     
     private var displayFormatedValue: Double {
         set {
-            displayLabel.text = formatter.string(from: NSNumber(value: newValue))
+            let formattedText = formatter.string(from: NSNumber(value: newValue))
+            // Replace comma with point to not affect the number displayed
+            displayLabel.text = formattedText?.replacingOccurrences(of: ".", with: ",")
         }
         get {
-            guard let displayText = displayLabel.text,
+            // Replace comma with point to be able to perform a correct math operation
+            guard let displayText = displayLabel.text?.replacingOccurrences(of: ",", with: "."),
                   let formattedNumber = formatter.number(from: displayText) else {
+                logger.error("Text format fails")
                 return .zero
             }
             return Double(truncating: formattedNumber)
@@ -39,20 +43,40 @@ class ViewController: UIViewController {
     // MARK: Actions
     /// This IBAction receives the "Touch Up Inside" event when user taps in the 0...9 digits
     /// - Parameter sender: a view of type `(UIbutton)` that represent a digit
-    @IBAction func didTapDigit(_ sender: UIButton) {
-        guard let digitText = sender.titleLabel?.text else {
+    @IBAction func didTapDigitOrComma(_ sender: UIButton) {
+        guard let buttonText = sender.titleLabel?.text else {
             logger.error("The button has not text")
             return
         }
-        logger.log("Digit tapped: \(digitText)")
+        logger.log("Digit tapped: \(buttonText)")
         
-        let currentDisplayText = displayLabel.text ?? ""
+        guard let (displayText, digitOrComma) = shouldAddComma(buttonText) else {
+            return
+        }
+        
         if isUserTypingNumber {
-            displayLabel.text = currentDisplayText + digitText
+            displayLabel.text = displayText + digitOrComma
         } else {
-            displayLabel.text = digitText
+            displayLabel.text = digitOrComma
             isUserTypingNumber = true
         }
+    }
+    
+    /// Predicate to add comma or zero with comma to the digits
+    /// - Parameter buttonText: a text of type `(String)` that represent a digit or comma
+    /// - Returns: a tuple of type `(String:String)` that represent the display text and the digit with or without comma
+    private func shouldAddComma(_ buttonText: String) -> (String, String)? {
+        let displayText = displayLabel.text ?? ""
+        let didTapComma = buttonText == ","
+        
+        // Validation to avoid add more than one comma in the first or second number
+        if didTapComma && displayText.contains(",") && isUserTypingNumber {
+            return nil
+        }
+        
+        // Validation to add 0 after tap comma
+        let digitOrComma = didTapComma && !isUserTypingNumber ? "0," : buttonText
+        return (displayText, digitOrComma)
     }
     
     /// This IBAction receives the "Touch Up Inside" event when user taps in the operators

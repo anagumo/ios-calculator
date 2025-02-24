@@ -80,7 +80,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jR5-D4-9c0"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jR5-D4-9c0"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgA-pd-Lrs">
@@ -91,7 +91,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LTx-BI-Zod"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LTx-BI-Zod"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aW-sv-6Xn">
@@ -102,7 +102,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WPH-aj-UnI"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WPH-aj-UnI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRW-Xb-C60">
@@ -129,7 +129,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Obk-OS-3zw"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Obk-OS-3zw"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWV-RQ-OPJ">
@@ -140,7 +140,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gzX-bO-6If"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gzX-bO-6If"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5h-uW-iv9">
@@ -151,7 +151,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Ug-PH-Ybv"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Ug-PH-Ybv"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRO-NY-MIG">
@@ -178,7 +178,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hff-Od-wfW"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hff-Od-wfW"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZF2-5Y-eUG">
@@ -189,7 +189,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p8I-Qh-rbf"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p8I-Qh-rbf"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byY-iC-jpW">
@@ -200,7 +200,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Upn-Ow-z6c"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Upn-Ow-z6c"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRk-WK-njK">
@@ -235,7 +235,7 @@
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="didTapDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bYL-F5-vhy"/>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bYL-F5-vhy"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swd-9w-UWc">
@@ -245,6 +245,9 @@
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                                             <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zBo-Z2-T0Y"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-XD-CnI">
                                                         <rect key="frame" x="279.66666666666669" y="0.0" width="73.333333333333314" height="50"/>
