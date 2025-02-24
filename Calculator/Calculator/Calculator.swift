@@ -17,9 +17,9 @@ enum Operation {
 
 struct Calculator {
     /// Saves the first operand, the second one and the result
-    var accumulator: Double?
+    private var accumulator: Double?
     /// This dic maps the operator button text into an operation `(Operation)`
-    let operations: [String: Operation] = [
+    private let operations: [String: Operation] = [
         "+" : Operation.binaryOperation(+),
         "-": Operation.binaryOperation(-),
         "x": Operation.binaryOperation(*),
@@ -27,8 +27,8 @@ struct Calculator {
         "=": Operation.equal
     ]
     
-    var pendingBinaryOperation: PendingBinaryOperation?
-    var resultIsPending: Bool {
+    private var pendingBinaryOperation: PendingBinaryOperation?
+    private var resultIsPending: Bool {
         pendingBinaryOperation != nil
     }
     

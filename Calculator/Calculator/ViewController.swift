@@ -50,14 +50,14 @@ class ViewController: UIViewController {
         }
         logger.log("Digit tapped: \(buttonText)")
         
-        guard let (displayText, digitOrComma) = shouldAddComma(buttonText) else {
+        guard let (currentDisplayText, nextDigit) = shouldAddComma(buttonText) else {
             return
         }
         
         if isUserTypingNumber {
-            displayLabel.text = displayText + digitOrComma
+            displayLabel.text = currentDisplayText + nextDigit
         } else {
-            displayLabel.text = digitOrComma
+            displayLabel.text = nextDigit
             isUserTypingNumber = true
         }
     }
@@ -67,16 +67,16 @@ class ViewController: UIViewController {
     /// - Returns: a tuple of type `(String:String)` that represent the display text and the digit with or without comma
     private func shouldAddComma(_ buttonText: String) -> (String, String)? {
         let displayText = displayLabel.text ?? ""
-        let didTapComma = buttonText == ","
+        let isUserTypingComma = buttonText == ","
         
         // Validation to avoid add more than one comma in the first or second number
-        if didTapComma && displayText.contains(",") && isUserTypingNumber {
+        if isUserTypingComma && displayText.contains(",") && isUserTypingNumber {
             return nil
         }
         
         // Validation to add 0 after tap comma
-        let digitOrComma = didTapComma && !isUserTypingNumber ? "0," : buttonText
-        return (displayText, digitOrComma)
+        let nextDigit = isUserTypingComma && !isUserTypingNumber ? "0," : buttonText
+        return (displayText, nextDigit)
     }
     
     /// This IBAction receives the "Touch Up Inside" event when user taps in the operators
@@ -101,9 +101,8 @@ class ViewController: UIViewController {
     /// - Parameter sender: a view of type `(UIbutton)` that represent a clear action
     @IBAction func didTapClearDisplay(_ sender: UIButton) {
         logger.log("Clear button tapped")
-        displayFormatedValue = .zero // Clears the display
-        calculator.accumulator = 0 // Resets calculator data
-        calculator.pendingBinaryOperation = nil // Resets calculator pending operation
+        displayFormatedValue = .zero // Clear the display
+        calculator = Calculator() // Reset complete state
         isUserTypingNumber = false // To not accum digits in the screen as 09
     }
 }
