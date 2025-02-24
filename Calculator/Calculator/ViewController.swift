@@ -13,31 +13,37 @@ class ViewController: UIViewController {
     
     // MARK: UI Components
     @IBOutlet var displayLabel: UILabel!
+    @IBOutlet var decimalSeparatorButton: UIButton!
     
     // MARK: Screen state
     private var calculator = Calculator()
     private var isUserTypingNumber: Bool = false
     private var formatter: NumberFormatter {
         let numberFormatter = NumberFormatter()
+        numberFormatter.locale = .current
         numberFormatter.numberStyle = .decimal
+        numberFormatter.decimalSeparator = Locale.getDecimalSeparator()
         return numberFormatter
     }
     
     private var displayFormatedValue: Double {
         set {
-            let formattedText = formatter.string(from: NSNumber(value: newValue))
-            // Replace comma with point to not affect the number displayed
-            displayLabel.text = formattedText?.replacingOccurrences(of: ".", with: ",")
+            displayLabel.text = formatter.string(from: NSNumber(value: newValue))
         }
         get {
-            // Replace comma with point to be able to perform a correct math operation
-            guard let displayText = displayLabel.text?.replacingOccurrences(of: ",", with: "."),
+            guard let displayText = displayLabel.text,
                   let formattedNumber = formatter.number(from: displayText) else {
                 logger.error("Text format fails")
                 return .zero
             }
             return Double(truncating: formattedNumber)
         }
+    }
+    
+    // MARK: Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        customizeButtons()
     }
     
     // MARK: Actions
@@ -50,14 +56,15 @@ class ViewController: UIViewController {
         }
         logger.log("Digit tapped: \(buttonText)")
         
-        guard let (currentDisplayText, nextDigit) = shouldAddComma(buttonText) else {
+        guard let (currentDisplayText, nextValue) = shouldAddComma(buttonText) else {
+            logger.error("Not double decimal separator allowed")
             return
         }
         
         if isUserTypingNumber {
-            displayLabel.text = currentDisplayText + nextDigit
+            displayLabel.text = currentDisplayText + nextValue
         } else {
-            displayLabel.text = nextDigit
+            displayLabel.text = nextValue
             isUserTypingNumber = true
         }
     }
@@ -67,16 +74,16 @@ class ViewController: UIViewController {
     /// - Returns: a tuple of type `(String:String)` that represent the display text and the digit with or without comma
     private func shouldAddComma(_ buttonText: String) -> (String, String)? {
         let displayText = displayLabel.text ?? ""
-        let isUserTypingComma = buttonText == ","
+        let isUserTypingComma = buttonText == Locale.getDecimalSeparator()
         
         // Validation to avoid add more than one comma in the first or second number
-        if isUserTypingComma && displayText.contains(",") && isUserTypingNumber {
-            return nil
+        guard isUserTypingComma && displayText.contains(Locale.getDecimalSeparator()) && isUserTypingNumber else {
+            // Validation to add 0 after tap comma
+            let nextValue = isUserTypingComma && !isUserTypingNumber ? "0\(Locale.getDecimalSeparator())" : buttonText
+            return (displayText, nextValue)
         }
         
-        // Validation to add 0 after tap comma
-        let nextDigit = isUserTypingComma && !isUserTypingNumber ? "0," : buttonText
-        return (displayText, nextDigit)
+        return nil
     }
     
     /// This IBAction receives the "Touch Up Inside" event when user taps in the operators
@@ -100,9 +107,26 @@ class ViewController: UIViewController {
     /// This IBAction receives the "Touch Up Inside" event when user taps in the clear button
     /// - Parameter sender: a view of type `(UIbutton)` that represent a clear action
     @IBAction func didTapClearDisplay(_ sender: UIButton) {
-        logger.log("Clear button tapped")
         displayFormatedValue = .zero // Clear the display
         calculator = Calculator() // Reset complete state
         isUserTypingNumber = false // To not accum digits in the screen as 09
+        logger.log("Display cleared")
+    }
+}
+
+extension ViewController {
+    
+    /// UI Components customization
+    private func customizeButtons() {
+        var uiButtonConfiguration = UIButton.Configuration.filled()
+        uiButtonConfiguration.baseBackgroundColor = UIColor.calculatorDark
+        uiButtonConfiguration.cornerStyle = .capsule
+        uiButtonConfiguration.attributedTitle = AttributedString(
+            Locale.getDecimalSeparator(),
+            attributes: AttributeContainer([
+                .font: UIFont.systemFont(ofSize: 30, weight: .regular),
+                .foregroundColor: UIColor.white
+            ]))
+        decimalSeparatorButton.configuration = uiButtonConfiguration
     }
 }

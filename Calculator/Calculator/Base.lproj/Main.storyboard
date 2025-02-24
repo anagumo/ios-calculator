@@ -229,9 +229,9 @@
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swd-9w-UWc">
                                                                         <rect key="frame" x="92.333333333333343" y="0.0" width="72.333333333333343" height="50"/>
                                                                         <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="filled" title="," cornerStyle="capsule">
+                                                                        <buttonConfiguration key="configuration" style="filled" title="" cornerStyle="capsule">
                                                                             <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                                                            <color key="baseBackgroundColor" red="0.1764705926" green="0.1686274707" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="baseBackgroundColor" red="0.1764705882352941" green="0.16862745098039217" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="didTapDigitOrComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zBo-Z2-T0Y"/>
@@ -279,6 +279,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="decimalSeparatorButton" destination="swd-9w-UWc" id="Fmc-BH-2aj"/>
                         <outlet property="displayLabel" destination="JNf-E4-40b" id="Xbg-XL-JRp"/>
                     </connections>
                 </viewController>
