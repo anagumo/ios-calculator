@@ -72,4 +72,14 @@ class ViewController: UIViewController {
         calculator.performOperation(operatorText)
         displayFormatedValue = calculator.result ?? .zero
     }
+    
+    /// This IBAction receives the "Touch Up Inside" event when user taps in the clear button
+    /// - Parameter sender: a view of type `(UIbutton)` that represent a clear action
+    @IBAction func didTapClearDisplay(_ sender: UIButton) {
+        logger.log("Clear button tapped")
+        displayFormatedValue = .zero // Clears the display
+        calculator.accumulator = 0 // Resets calculator data
+        calculator.pendingBinaryOperation = nil // Resets calculator pending operation
+        isUserTypingNumber = false // To not accum digits in the screen as 09
+    }
 }

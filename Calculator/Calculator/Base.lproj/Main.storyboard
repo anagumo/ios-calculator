@@ -36,6 +36,9 @@
                                                         <buttonConfiguration key="configuration" style="filled" image="delete.left.fill" catalog="system" cornerStyle="capsule">
                                                             <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="didTapClearDisplay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r9x-88-IOB"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b71-MF-nOi">
                                                         <rect key="frame" x="93.333333333333343" y="0.0" width="73.333333333333343" height="50"/>
@@ -105,7 +108,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRW-Xb-C60">
                                                         <rect key="frame" x="279.66666666666669" y="0.0" width="73.333333333333314" height="50"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="X" cornerStyle="capsule">
+                                                        <buttonConfiguration key="configuration" style="filled" title="x" cornerStyle="capsule">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                                             <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                                         </buttonConfiguration>
